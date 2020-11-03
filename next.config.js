@@ -4,7 +4,10 @@ const nextConfig = {
     devIndicators: {
         autoPrerender: false
     },
+    generateInDevMode: true,
+    devSwSrc: 'static/service-worker.js',
     workboxOpts: {
+        swDest: 'static/service-worker.js',
         runtimeCaching: [
             {
                 urlPattern: /.jpg$/,
