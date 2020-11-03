@@ -6,14 +6,23 @@ const nextConfig = {
     },
     transformManifest: (manifest) => ['/'].concat(manifest),
     generateInDevMode: true,
+    dontAutoRegisterSw: true,
     workboxOpts: {
+        swDest: 'static/service-worker.js',
         runtimeCaching: [
             {
-                urlPattern: /.jpg$/,
+                urlPattern: /\.(?:jpg|jpeg|svg)$/,
                 handler: 'CacheFirst',
                 options: {
-                    cacheName: 'images'
+                    cacheName: 'images',
+                    expiration: {
+                        maxEntries: 10
+                    }
                 }
+            },
+            {
+                urlPattern: /^https:\/\/yts.mx\/api\/v2\/list_movies/,
+                handler: 'StaleWhileRevalidate'
             },
             {
                 urlPattern: /^https:\/\/yts.mx\/api\/v2\/list_movies/i,
