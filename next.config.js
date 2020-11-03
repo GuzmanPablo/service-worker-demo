@@ -11,6 +11,13 @@ const nextConfig = {
         swDest: 'static/service-worker.js',
         runtimeCaching: [
             {
+                urlPattern: /\/_next\/static\/chunks.+.js$/,
+                handler: 'StaleWhileRevalidate',
+                options: {
+                    cacheName: 'chunks'
+                }
+            },
+            {
                 urlPattern: /\.(?:jpg|jpeg|svg)$/,
                 handler: 'CacheFirst',
                 options: {
