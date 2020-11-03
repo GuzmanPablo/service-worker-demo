@@ -16,10 +16,6 @@ const Movie = () => {
         getSugestions(id).then(setSuggestions);
     }, [id]);
 
-    useEffect(() => {
-        console.warn({ movie, suggestions });
-    }, [movie, suggestions]);
-
     if (!movie) return false;
 
     const genres = (accum, curr, i) => (i !== 0 ? `${accum}, ${curr}` : `${curr}`);

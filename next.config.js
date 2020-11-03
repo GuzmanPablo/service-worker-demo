@@ -1,10 +1,7 @@
 const withOffline = require('next-offline');
 
 const nextConfig = {
-    devIndicators: {
-        autoPrerender: false
-    },
-    generateInDevMode: true,
+    transformManifest: (manifest) => ['/'].concat(manifest),
     workboxOpts: {
         runtimeCaching: [
             {
