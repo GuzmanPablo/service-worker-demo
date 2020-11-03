@@ -12,7 +12,10 @@ app.prepare().then(() => {
         const { pathname } = parsedUrl;
 
         if (pathname === '/service-worker.js') {
-            const filePath = join(__dirname, '.next/static', pathname);
+            const filePath =
+                process.env.NODE_ENV !== 'production'
+                    ? join(__dirname, '.next/static', pathname)
+                    : join(__dirname, '_next/static', pathname);
             app.serveStatic(req, res, filePath);
         } else {
             handle(req, res, parsedUrl);
