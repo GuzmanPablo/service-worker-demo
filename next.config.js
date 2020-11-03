@@ -4,6 +4,7 @@ const nextConfig = {
     devIndicators: {
         autoPrerender: false
     },
+    generateInDevMode: true,
     workboxOpts: {
         runtimeCaching: [
             {
