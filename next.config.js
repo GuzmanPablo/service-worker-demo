@@ -21,10 +21,6 @@ const nextConfig = {
                 }
             },
             {
-                urlPattern: /^https:\/\/yts.mx\/api\/v2\/list_movies/,
-                handler: 'StaleWhileRevalidate'
-            },
-            {
                 urlPattern: /^https:\/\/yts.mx\/api\/v2\/list_movies/i,
                 handler: 'StaleWhileRevalidate',
                 options: {
